@@ -20,7 +20,11 @@
         app:layout_constraintTop_toTopOf="parent"
         android:scrollbars="vertical"
         />
-
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -28,22 +32,8 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="connect"
-            android:onClick="connect"
-            />
-        <Button
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="disconnect"
-            android:onClick="disconnect"
-            />
-        <Button
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="correct time"
-            android:onClick="correctTime"
+            android:text="correct"
+            android:onClick="startCorrect"
             />
     </LinearLayout>
 </LinearLayout>

@@ -376,7 +376,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onCharacteristicChanged(final BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
                         byte[] lValue = characteristic.getValue();
 
-                        Logger.d("onCharacteristicChanged"+byteArrayToHexString(lValue));
+                        Logger.e("onCharacteristicChanged"+byteArrayToHexString(lValue));
                         /*
 
                         if (!AuthSuccess(lValue)) {
@@ -588,13 +588,16 @@ public class MainActivity extends AppCompatActivity {
     public static final byte[] datetimeToByteArray(int year,int month,int day,int hour,int minute,int sec)
     {
         Logger.d(year+" "+month+" "+day+" "+hour+" "+minute+" "+sec);
-        byte[] data=new byte[7];
-        System.arraycopy(uint16ToByteArray(year), 0, data, 0, 2);
-        System.arraycopy(uint8ToByteArray(month), 0, data, 2, 1);
-        System.arraycopy(uint8ToByteArray(day), 0, data, 3, 1);
-        System.arraycopy(uint8ToByteArray(hour), 0, data, 4, 1);
-        System.arraycopy(uint8ToByteArray(minute), 0, data, 5, 1);
-        System.arraycopy(uint8ToByteArray(sec), 0, data, 6, 1);
+        byte[] data=new byte[]{
+                (byte) (year & 0xFF),
+                (byte) ((year >> 8) & 0xFF),
+                (byte) (month & 0xFF),
+                (byte) (day & 0xFF),
+                (byte) (hour & 0xFF),
+                (byte) (minute & 0xFF),
+                (byte) (sec & 0xFF)
+        };
+
         return data;
     }
 }
